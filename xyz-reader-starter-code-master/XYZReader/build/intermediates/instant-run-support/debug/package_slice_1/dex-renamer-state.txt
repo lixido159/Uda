@@ -1,4 +1,4 @@
-#Tue Mar 06 22:19:20 CST 2018
-base.0=D\:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_1
+#Tue Mar 06 21:51:54 CST 2018
+base.0=C\:\\Users\\m\\AndroidStudioProjects\\2018-repository-master\\lixido159-2018-xyz-2823d93\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+path.0=classes.dex
 renamed.0=classes.dex
-file.0=D\:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_1\\classes.dex

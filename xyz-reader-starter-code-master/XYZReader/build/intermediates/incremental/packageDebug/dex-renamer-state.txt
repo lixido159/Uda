@@ -1,7 +1,0 @@
-#Tue Mar 06 22:19:57 CST 2018
-base.0=D\:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_e4890b01eb5b661fdd2b95a577cdf62cbb1fe633
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=D\:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_2e890ab602fbc62ca95805f8b2c5feab0665fca4\\classes.dex
-base.1=D\:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_2e890ab602fbc62ca95805f8b2c5feab0665fca4
-file.0=D\:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_e4890b01eb5b661fdd2b95a577cdf62cbb1fe633\\classes.dex

@@ -19,8 +19,10 @@
 
     <application
         android:allowBackup="true"
+        android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:testOnly="true"
         android:theme="@style/Theme.Bacon" >
         <activity
             android:name="com.example.xyzreader.ui.ArticleListActivity"
@@ -55,10 +57,10 @@
             android:name="com.example.xyzreader.data.ItemsProvider"
             android:authorities="com.example.xyzreader"
             android:exported="false" />
-
-        <service
-            android:name="com.android.tools.fd.runtime.InstantRunService"
-            android:exported="true" />
+        <provider
+            android:name="com.android.tools.ir.server.InstantRunContentProvider"
+            android:authorities="com.example.xyzreader.com.android.tools.ir.server.InstantRunContentProvider"
+            android:multiprocess="true" />
     </application>
 
 </manifest>
