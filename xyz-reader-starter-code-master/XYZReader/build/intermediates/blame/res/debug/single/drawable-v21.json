@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "D:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\design_bottom_navigation_item_background.xml",
+        "source": "C:\\Users\\m\\.android\\build-cache\\617458868663448452b0affb7d9325596b655724\\output\\res\\drawable-v21\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "D:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\white_selectable_item_background_circle.xml",
+        "source": "D:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\src\\main\\res\\drawable-v21\\white_selectable_item_background_circle.xml"
+    },
+    {
+        "merged": "D:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\m\\.android\\build-cache\\4a23d73dc99c42a8e10606068f15895f90ea7ce7\\output\\res\\drawable-v21\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "D:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\m\\.android\\build-cache\\4a23d73dc99c42a8e10606068f15895f90ea7ce7\\output\\res\\drawable-v21\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "D:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\Users\\m\\.android\\build-cache\\4a23d73dc99c42a8e10606068f15895f90ea7ce7\\output\\res\\drawable-v21\\notification_action_background.xml"
+    },
+    {
+        "merged": "D:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\m\\.android\\build-cache\\4a23d73dc99c42a8e10606068f15895f90ea7ce7\\output\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    }
+]

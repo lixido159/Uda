@@ -1,0 +1,4 @@
+#Tue Mar 06 22:09:09 CST 2018
+base.0=D\:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_6
+renamed.0=classes.dex
+file.0=D\:\\GitHub\\2018-repository\\xyz-reader-starter-code-master\\XYZReader\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_6\\classes.dex
