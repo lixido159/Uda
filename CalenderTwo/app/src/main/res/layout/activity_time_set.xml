@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.example.m.calendertwo.TimeSetActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_set_toolbar"
+            android:background="@color/back_color">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/title_size"
+                android:textColor="@color/black"
+                android:id="@+id/time_set_title"/>
+        </android.support.v7.widget.Toolbar>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_line" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@android:dimen/app_icon_size"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:id="@+id/time_set_time"
+            android:textSize="@dimen/title_size"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="12dp"
+            tools:text="2018年3月18日 周日"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.example.m.calendertwo.customView.YearPickerScrollView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/pick_scroll_height"
+                android:layout_weight="1"
+                android:id="@+id/time_set_year"/>
+            <com.example.m.calendertwo.customView.MonthPickerScrollView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/pick_scroll_height"
+                android:layout_weight="1"
+                android:id="@+id/time_set_month"/>
+            <com.example.m.calendertwo.customView.DayPickerScrollView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/pick_scroll_height"
+                android:layout_weight="1"
+                android:id="@+id/time_set_day"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_line" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="@color/back_color"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_line" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.example.m.calendertwo.customView.TimePickScrollView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/pick_scroll_height"
+                android:id="@+id/time_set_hour"/>
+            <com.example.m.calendertwo.customView.TimePickScrollView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/pick_scroll_height"
+                android:id="@+id/time_set_minute"/>
+        </LinearLayout>
+    </LinearLayout>
+
+

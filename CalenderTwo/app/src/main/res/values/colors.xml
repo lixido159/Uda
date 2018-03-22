@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="plan_background">#FFFFFF</color>
+    <color name="back_color">#F5F5F5</color>
+    <color name="plus_circle_pressed_color">#F5F5F5</color>
+    <color name="gray_line">#E0E0E0</color>
+    <color name="text_selected_color">#BDBDBD</color>
+    <color name="plus_circle_unpressed_color">#BDBDBD</color>
+    <color name="text_color">#616161</color>
+
+
+
+
+
+    <color name="black">#000000</color>
+    <color name="date_click">#00BCD4</color>
+
+    <color name="track_checked">#00BCD4</color>
+    <color name="track_unchecked">#E0E0E0</color>
+    <color name="thumb_color">#BDBDBD</color>
+
+    <color name="scroll_selector_circle_color">#00E5FF</color>
+
+    <color name="icon_bicycle">#03A9F4</color>
+    <color name="icon_cafe">#00E676</color>
+    <color name="icon_car">#00E5FF</color>
+    <color name="icon_cut">#0091EA</color>
+    <color name="icon_draw">#FF3D00</color>
+    <color name="icon_eating">#FF6D00</color>
+    <color name="icon_gift">#FF4081</color>
+    <color name="icon_meeting">#0091EA</color>
+    <color name="icon_money">#FFD600</color>
+    <color name="icon_movie">#2962FF</color>
+    <color name="icon_phone">#FF6D00</color>
+    <color name="icon_plane">#0091EA</color>
+    <color name="icon_run">#00C853</color>
+    <color name="icon_shopping">#00E676</color>
+    <color name="icon_train">#00E5FF</color>
+</resources>
