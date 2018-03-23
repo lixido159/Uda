@@ -19,16 +19,18 @@ import com.example.m.calendertwo.database.MemoContract;
 import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 /**
  * Created by m on 2018/3/13.
  */
-
+//每个日期下面的安排事项
 public class MemorRecyclerAdapter extends RecyclerView.Adapter<MemorRecyclerAdapter.ViewHolder> {
     private Cursor mCursor;
 
     public MemorRecyclerAdapter(ContentResolver mResolver) {
         this.mResolver = mResolver;
+        setHasStableIds(true);
     }
 
     private ContentResolver mResolver;
@@ -40,13 +42,12 @@ public class MemorRecyclerAdapter extends RecyclerView.Adapter<MemorRecyclerAdap
     }
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        while (mCursor.moveToNext()){
-            DecimalFormat format=new DecimalFormat("00");
-            holder.timeText.setText(String.format(holder.timeText.getContext().getString(R.string.new_building_hour_minute),
-                    format.format(mCursor.getInt(MemoContract.INDEX_BEGIN_TIME_HOUR)),
-                    format.format(mCursor.getInt(MemoContract.INDEX_BEGIN_TIME_MINUTE))));
-            holder.planText.setText(mCursor.getString(MemoContract.INDEX_PLAN));
-        }
+        mCursor.moveToPosition(position);
+        DecimalFormat format=new DecimalFormat("00");
+        holder.timeText.setText(String.format(holder.timeText.getContext().getString(R.string.new_building_hour_minute),
+                format.format(mCursor.getInt(MemoContract.INDEX_BEGIN_TIME_HOUR)),
+                format.format(mCursor.getInt(MemoContract.INDEX_BEGIN_TIME_MINUTE))));
+        holder.planText.setText(mCursor.getString(MemoContract.INDEX_PLAN));
     }
 
     @Override
@@ -73,6 +74,4 @@ public class MemorRecyclerAdapter extends RecyclerView.Adapter<MemorRecyclerAdap
             timeText=itemView.findViewById(R.id.time_memor_recycler_item);
         }
     }
-
-
 }

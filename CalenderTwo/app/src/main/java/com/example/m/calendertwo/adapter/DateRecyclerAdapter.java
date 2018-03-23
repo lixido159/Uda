@@ -2,6 +2,7 @@ package com.example.m.calendertwo.adapter;
 
 import android.animation.Animator;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.m.calendertwo.DateInfo;
+import com.example.m.calendertwo.MainActivity;
 import com.example.m.calendertwo.R;
 
 import org.w3c.dom.Text;
@@ -31,11 +33,13 @@ public class DateRecyclerAdapter extends RecyclerView.Adapter<DateRecyclerAdapte
     private int mOriginalPosition;
     private boolean isFirst=true;
     private GapDaysCallBack callBack;
+    private GapDaysCallBack mainCallBack;
     private int mGapDay;
-    public DateRecyclerAdapter(DateInfo mDateInfo, GapDaysCallBack callBack,int mGapDay) {
+    public DateRecyclerAdapter(DateInfo mDateInfo, GapDaysCallBack callBack, int mGapDay) {
         this.mDateInfo = mDateInfo;
         this.callBack=callBack;
         this.mGapDay=mGapDay;
+        mainCallBack=MainActivity.getInstance();
     }
 
     @NonNull
@@ -104,8 +108,6 @@ public class DateRecyclerAdapter extends RecyclerView.Adapter<DateRecyclerAdapte
             }
 
             mViewHolder.revealView.setVisibility(View.VISIBLE);
-
-
             if (mPosition==mDateInfo.getDay()&&mOldPosition!=mDateInfo.getDay()){
                 mViewHolder.revealView.setBackground(mViewHolder.revealView.getResources().getDrawable(R.drawable.circle_background));
             }
@@ -123,15 +125,14 @@ public class DateRecyclerAdapter extends RecyclerView.Adapter<DateRecyclerAdapte
                 mOldViewHolder.revealView.setVisibility(View.INVISIBLE);
             }
             mOldViewHolder.textView.setTextColor(mOldViewHolder.parentView.getContext().getColor(R.color.black));
-            callBack.click(mGapDay+mPosition-mOriginalPosition);
-            callBack.updatePlan(mDateInfo.getYear(),mDateInfo.getMonth(),mPosition);
+            callBack.updatePlan(mDateInfo.getYear(),mDateInfo.getMonth(),mPosition,mGapDay+mPosition-mOriginalPosition);
+            mainCallBack.updatePlan(mDateInfo.getYear(),mDateInfo.getMonth(),mPosition,mGapDay+mPosition-mOriginalPosition);
             mOldPosition=mPosition;
             mOldViewHolder=mViewHolder;
         }
     }
 
     public interface GapDaysCallBack{
-        void click(int days);
-        void updatePlan(int year,int month,int day);
+        void updatePlan(int year,int month,int day,int days);
     }
 }

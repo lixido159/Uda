@@ -55,7 +55,6 @@ public class NewBuildingActivity extends AppCompatActivity implements TitleIconR
     private Toolbar mToolBar;
     private ImageView mTitleIcon;
     private EditText mTitleText;
-    private boolean isFirst=true;
     private Activity mActivity;
     private TextView mBeginText;
     private TextView mEndText;
@@ -68,11 +67,9 @@ public class NewBuildingActivity extends AppCompatActivity implements TitleIconR
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_building);
         enterTransiton();
+
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
         init();
-        setIntent();
-
         mActivity=this;
         mBeginLayout.setTag(getString(R.string.begin));
         mBeginLayout.setOnClickListener(this);
@@ -91,38 +88,45 @@ public class NewBuildingActivity extends AppCompatActivity implements TitleIconR
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId()==R.id.new_building_toolbar_menu_check){
                     starInsert();
-                    Intent intent= NavUtils.getParentActivityIntent(NewBuildingActivity.this);
+                    Intent intent=NavUtils.getParentActivityIntent(NewBuildingActivity.this);
+                    Bundle bundle=new Bundle();
+                    bundle.putParcelable(getString(R.string.begin),mBeginTime);
+                    intent.putExtra(getString(R.string.intent_time),bundle);
                     NavUtils.navigateUpTo(NewBuildingActivity.this,intent);
                 }
                 return false;
             }
         });
-
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        if (isFirst){
-            View view= View.inflate(this,R.layout.title_icon,null);
-            RecyclerView recyclerView=view.findViewById(R.id.window_title_icon_recycler);
-            AlertDialog.Builder builder=new AlertDialog.Builder(NewBuildingActivity.this);
-            GridLayoutManager manager=new GridLayoutManager(this,5);
-            TitleIconRecyclerAdapter adapter=new TitleIconRecyclerAdapter(mImages,mBackgrounds,this);
-            recyclerView.setLayoutManager(manager);
-            recyclerView.setAdapter(adapter);
-            builder.setView(view);
-            mDialog=builder.create();
-            Window window=mDialog.getWindow();
-            window.setWindowAnimations(R.style.dialogAnimation);
-            mTitleIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mDialog.show();
-                }
-            });
-            isFirst=false;
-        }
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        super.onNewIntent(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        View view= View.inflate(this,R.layout.title_icon,null);
+        RecyclerView recyclerView=view.findViewById(R.id.window_title_icon_recycler);
+        AlertDialog.Builder builder=new AlertDialog.Builder(NewBuildingActivity.this);
+        GridLayoutManager manager=new GridLayoutManager(this,5);
+        TitleIconRecyclerAdapter adapter=new TitleIconRecyclerAdapter(mImages,mBackgrounds,this);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setAdapter(adapter);
+        builder.setView(view);
+        mDialog=builder.create();
+        Window window=mDialog.getWindow();
+        window.setWindowAnimations(R.style.dialogAnimation);
+        mTitleIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialog.show();
+            }
+        });
+
+
 
     }
 
@@ -153,6 +157,21 @@ public class NewBuildingActivity extends AppCompatActivity implements TitleIconR
                 R.drawable.icon_run,R.drawable.icon_cut,R.drawable.icon_car,
                 R.drawable.icon_money,R.drawable.icon_bicycle,R.drawable.icon_draw};
         mTitles= getResources().getStringArray(R.array.title_icons_text);
+        Bundle bundle=getIntent().getBundleExtra(getString(R.string.intent_time));
+        mBeginTime=bundle.getParcelable(getString(R.string.begin));
+        mEndTime=bundle.getParcelable(getString(R.string.end));
+        DecimalFormat format=new DecimalFormat("00");
+        if (!TimeInfo.isAtSameDay(mBeginTime,mEndTime)){
+            mEndText.setText(String.format(getString(R.string.new_building_time), mEndTime.getYear(),
+                    mEndTime.getMonth(),mEndTime.getDay(),
+                    format.format(mEndTime.getHour()), format.format(mEndTime.getMinute())));
+        }else{
+            mEndText.setText(String.format(getString(R.string.new_building_hour_minute),
+                    format.format(mEndTime.getHour()), format.format(mEndTime.getMinute())));
+        }
+        mBeginText.setText(String.format(getString(R.string.new_building_time), mBeginTime.getYear(),
+                mBeginTime.getMonth(),mBeginTime.getDay(),
+                format.format(mBeginTime.getHour()), format.format(mBeginTime.getMinute())));
     }
 
     @Override
@@ -187,34 +206,30 @@ public class NewBuildingActivity extends AppCompatActivity implements TitleIconR
     }
 
 
-    public void setIntent() {
-        Intent intent = getIntent();
+    public void setIntent(Intent intent) {
         Bundle bundle=intent.getBundleExtra(getString(R.string.intent_time));
-        if (bundle != null) {
-            mBeginTime = bundle.getParcelable(getString(R.string.new_building_begin));
-            mEndTime = bundle.getParcelable(getString(R.string.new_building_end));
-                if (TimeInfo.isSmaller(mBeginTime,mEndTime)){
-                    mEndTime= new TimeInfo(mBeginTime.getYear(),mBeginTime.getMonth(),
-                            mBeginTime.getDay(),mBeginTime.getHour(),mBeginTime.getMinute(),
-                            TimeInfo.TYPE_END);
-                }
-        }
-        else {
-            mBeginTime=TimeInfo.getTimeInfo(TimeInfo.TYPE_BEGIN);
-            mEndTime=TimeInfo.getTimeInfo(TimeInfo.TYPE_END);
+        mBeginTime = bundle.getParcelable(getString(R.string.new_building_begin));
+        mEndTime = bundle.getParcelable(getString(R.string.new_building_end));
+        //结束日期在开始日期之前
+        if (TimeInfo.isSmaller(mBeginTime,mEndTime)) {
+            mEndTime = new TimeInfo(mBeginTime.getYear(), mBeginTime.getMonth(),
+                    mBeginTime.getDay(), mBeginTime.getHour(), mBeginTime.getMinute(),
+                    TimeInfo.TYPE_END);
         }
         DecimalFormat format=new DecimalFormat("00");
+        //不是同一天
         if (!TimeInfo.isAtSameDay(mBeginTime,mEndTime)){
             mEndText.setText(String.format(getString(R.string.new_building_time), mEndTime.getYear(),
                     mEndTime.getMonth(),mEndTime.getDay(),
                     format.format(mEndTime.getHour()), format.format(mEndTime.getMinute())));
-        }else{
+        }else{//在同一天，结束时间只显示小时分钟
             mEndText.setText(String.format(getString(R.string.new_building_hour_minute),
                     format.format(mEndTime.getHour()), format.format(mEndTime.getMinute())));
         }
         mBeginText.setText(String.format(getString(R.string.new_building_time), mBeginTime.getYear(),
                 mBeginTime.getMonth(),mBeginTime.getDay(),
                 format.format(mBeginTime.getHour()), format.format(mBeginTime.getMinute())));
+
     }
     private void starInsert(){
         AsyncQueryHandler handler=new AsyncQueryHandler(getContentResolver()) {
@@ -241,5 +256,8 @@ public class NewBuildingActivity extends AppCompatActivity implements TitleIconR
         values.put(MemoContract.COLUMN_END_TIME_MINUTE,mEndTime.getMinute());
         handler.startInsert(0,null,MemoContract.CONTENT_URI,values);
     }
+
+
+
 }
 

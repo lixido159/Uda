@@ -68,7 +68,6 @@ public class TimeInfo implements Parcelable {
         this.mMinute = mMinute;
         this.mType = mType;
     }
-
     public static TimeInfo getTimeInfo(int type){
         Calendar calendar=Calendar.getInstance();
         TimeZone tz = TimeZone.getTimeZone("GMT+08");
