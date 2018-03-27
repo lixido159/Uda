@@ -29,4 +29,6 @@
     <string name="new_building_begin">begin</string>
     <string name="new_building_end">end</string>
     <string name="new_building_type">type</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

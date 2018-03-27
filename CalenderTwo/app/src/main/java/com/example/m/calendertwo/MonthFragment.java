@@ -5,6 +5,7 @@ import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,7 +31,9 @@ public class MonthFragment extends Fragment implements DateRecyclerAdapter.GapDa
     private int mMonth;
     private int mDay;
     private MemorRecyclerAdapter memorRecyclerAdapter;
-    DateInfo mDateInfo;
+    private DateInfo mDateInfo;
+    private RecyclerView mMemorRecycler;
+
     public MonthFragment() {
         // Required empty public constructor
     }
@@ -46,7 +49,7 @@ public class MonthFragment extends Fragment implements DateRecyclerAdapter.GapDa
         mMonth=mDateInfo.getMonth();
         mDay=mDateInfo.getDay();
         RecyclerView recyclerView=view.findViewById(R.id.month_fragment_recycler);
-        RecyclerView memorRecycler=view.findViewById(R.id.month_fragment_memor_recycler);
+        mMemorRecycler=view.findViewById(R.id.month_fragment_memor_recycler);
         mDaysText=view.findViewById(R.id.month_fragment_distance_days);
         int days=0;
         if (DateInfo.isEquale(DateInfo.getDate(),mDateInfo))
@@ -63,18 +66,14 @@ public class MonthFragment extends Fragment implements DateRecyclerAdapter.GapDa
         recyclerView.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext(),
                 LinearLayoutManager.VERTICAL,false);
-        memorRecycler.setLayoutManager(linearLayoutManager);
+        mMemorRecycler.setLayoutManager(linearLayoutManager);
         memorRecyclerAdapter=new MemorRecyclerAdapter(getContext().getContentResolver());
         starQuery(mYear,mMonth,mDay,getContext().getContentResolver());
-        memorRecycler.setAdapter(memorRecyclerAdapter);
+        mMemorRecycler.setAdapter(memorRecyclerAdapter);
+
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-    }
 
     private void starQuery(int year, int month, int day, ContentResolver contentResolver){
         MyQueryHandler queryHandler=new MyQueryHandler(contentResolver);
@@ -93,8 +92,10 @@ public class MonthFragment extends Fragment implements DateRecyclerAdapter.GapDa
         mYear=year;
         mMonth=month;
         mDay=day;
-        starQuery(mYear,mMonth,mDay,getContext().getContentResolver());
+        starQuery(year,month,day,getContext().getContentResolver());
+
     }
+
 
     public class MyQueryHandler extends AsyncQueryHandler{
         public MyQueryHandler(ContentResolver cr) {
@@ -104,15 +105,11 @@ public class MonthFragment extends Fragment implements DateRecyclerAdapter.GapDa
         @Override
         protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
             super.onQueryComplete(token, cookie, cursor);
+
             memorRecyclerAdapter.swapCursor(cursor);
+
         }
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
 
     //点击不同的日期
     @Override

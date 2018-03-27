@@ -48,6 +48,7 @@ public class MemorRecyclerAdapter extends RecyclerView.Adapter<MemorRecyclerAdap
                 format.format(mCursor.getInt(MemoContract.INDEX_BEGIN_TIME_HOUR)),
                 format.format(mCursor.getInt(MemoContract.INDEX_BEGIN_TIME_MINUTE))));
         holder.planText.setText(mCursor.getString(MemoContract.INDEX_PLAN));
+        Log.v("线程111",Thread.currentThread().getName());
     }
 
     @Override
@@ -58,8 +59,11 @@ public class MemorRecyclerAdapter extends RecyclerView.Adapter<MemorRecyclerAdap
         return 0;
     }
     public void swapCursor(Cursor cursor){
+        if (mCursor!=null)
+           mCursor.close();
         mCursor=cursor;
         notifyDataSetChanged();
+
     }
 
 
