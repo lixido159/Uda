@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_calen"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -43,6 +43,7 @@
         <service android:name=".widget.GridWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS"/>
         <service android:name=".widget.CalenderService"/>
+        <service android:name=".NotificationService"/>
     </application>
 
 </manifest>

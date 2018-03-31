@@ -47,6 +47,7 @@ public class CalenderService extends IntentService {
             int[]appWidgetIds=appWidgetManager.getAppWidgetIds(new ComponentName(this,CalenderWidgetProvider.class));
             CalenderWidgetProvider.updateCalenderWidgets(this,appWidgetManager,appWidgetIds,
                     type);
+            Log.v("线程",Thread.currentThread().getName());
         }
     }
     public static void startActionUpdateWidgets(Context context){

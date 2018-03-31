@@ -1,13 +1,20 @@
 package com.example.m.calendertwo;
 
+import android.content.Context;
 import android.content.Intent;
+
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 import java.sql.Time;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.TimeZone;
 
 /**
@@ -72,6 +79,7 @@ public class TimeInfo implements Parcelable {
         Calendar calendar=Calendar.getInstance();
         TimeZone tz = TimeZone.getTimeZone("GMT+08");
         calendar.setTimeZone(tz);
+
         if (type==TYPE_BEGIN){
             return new TimeInfo(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH)+1,
                     calendar.get(Calendar.DAY_OF_MONTH),calendar.get(Calendar.HOUR_OF_DAY),
@@ -105,6 +113,19 @@ public class TimeInfo implements Parcelable {
             return true;
         }
         return false;
+    }
+
+    public static long dateToStamp(TimeInfo timeInfo, Context context)  {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+        String time= String.format(context.getString(R.string.timeStamp),
+                timeInfo.getYear(),timeInfo.getMonth(),timeInfo.getDay(),timeInfo.getHour(),timeInfo.getMinute());
+        Date date = null;
+        try {
+            date = simpleDateFormat.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date.getTime();
 
     }
 

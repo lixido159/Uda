@@ -82,10 +82,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/gray_line"/>
-            <android.support.v4.view.ViewPager
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/main_viewpager"/>
+                android:id="@+id/main_fragment"/>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -111,18 +112,35 @@
                     android:gravity="center"
                     android:textSize="@dimen/bottom_text_size"
                     android:text="@string/new_building_activity"
-                    android:textColor="@drawable/bottom_text"
+                    android:textColor="@drawable/selector_bottom_text"
                     android:clickable="true"
                     android:id="@+id/main_new_building_text"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/selector_month"
+                    android:drawablePadding="2dp"
+                    android:padding="3dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/bottom_text_size"
+                    android:text="@string/month"
+                    android:textColor="@drawable/selector_date_text"
+                    android:clickable="true"
+                    android:id="@+id/main_month_text" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/selector_week"
+                    android:drawablePadding="2dp"
+                    android:padding="3dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/bottom_text_size"
+                    android:text="@string/week"
+                    android:textColor="@drawable/selector_date_text"
+                    android:clickable="true"
+                    android:id="@+id/main_week_text"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

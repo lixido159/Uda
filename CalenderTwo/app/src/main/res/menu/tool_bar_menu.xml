@@ -4,5 +4,6 @@
     <item
         android:title="@string/today"
         android:id="@+id/menu_today"
+        android:textSize="@dimen/text_size"
         app:showAsAction="always"/>
 </menu>

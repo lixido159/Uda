@@ -6,9 +6,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_recycler_item">
     <View
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/reveal_size"
+        android:layout_height="@dimen/reveal_size"
         android:id="@+id/view_recycler_item"
+
         android:background="@drawable/circle_background"
         android:visibility="invisible"
         android:layout_centerInParent="true"/>
@@ -22,7 +23,7 @@
             android:layout_weight="2"
             android:id="@+id/date_recycler_item"
             android:gravity="center_horizontal|bottom"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size"
             android:textColor="@android:color/black"
             tools:text="1"/>
         <TextView

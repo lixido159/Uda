@@ -41,4 +41,7 @@
     <color name="icon_run">#00C853</color>
     <color name="icon_shopping">#00E676</color>
     <color name="icon_train">#00E5FF</color>
+
+    <color name="date">#BDBDBD</color>
+    <color name="date_selected">#00E5FF</color>
 </resources>

@@ -2,6 +2,9 @@ package com.example.m.calendertwo;
 
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -60,6 +63,7 @@ public class NewBuildingActivity extends AppCompatActivity implements TitleIconR
     private TextView mEndText;
     private TimeInfo mBeginTime;
     private TimeInfo mEndTime;
+    private int mSelectedIcon=0;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -88,6 +92,7 @@ public class NewBuildingActivity extends AppCompatActivity implements TitleIconR
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId()==R.id.new_building_toolbar_menu_check){
                     starInsert();
+                    startService();
                     Intent intent=NavUtils.getParentActivityIntent(NewBuildingActivity.this);
                     Bundle bundle=new Bundle();
                     bundle.putParcelable(getString(R.string.begin),mBeginTime);
@@ -125,9 +130,6 @@ public class NewBuildingActivity extends AppCompatActivity implements TitleIconR
                 mDialog.show();
             }
         });
-
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -257,6 +259,19 @@ public class NewBuildingActivity extends AppCompatActivity implements TitleIconR
         handler.startInsert(0,null,MemoContract.CONTENT_URI,values);
     }
 
+    private void startService(){
+        AlarmManager alarmManager= (AlarmManager) getSystemService(ALARM_SERVICE);
+        Intent intent=new Intent(NewBuildingActivity.this, NotificationService.class);
+        intent.setAction(NotificationService.ACTION_SHOW_NOTIFICATION);
+        Bundle bundle=new Bundle();
+        bundle.putString(getString(R.string.bundle_plan),mTitleText.getText().toString());
+        bundle.putInt(getString(R.string.bundle_hour),mBeginTime.getHour());
+        bundle.putInt(getString(R.string.bundle_minute),mBeginTime.getMinute());
+        intent.putExtra(getString(R.string.intent_time),bundle);
+        PendingIntent pendingIntent=PendingIntent.getService(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.set(AlarmManager.RTC_WAKEUP,TimeInfo.dateToStamp(mBeginTime,this),
+                pendingIntent);
+    }
 
 
 }

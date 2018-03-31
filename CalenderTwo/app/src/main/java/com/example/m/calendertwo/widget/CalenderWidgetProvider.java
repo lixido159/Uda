@@ -22,6 +22,7 @@ public class CalenderWidgetProvider extends AppWidgetProvider {
     public static final int RIGHT=1;
 
     public static int gap=0;
+
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId,int type) {
         // Instruct the widget manager to update the widget

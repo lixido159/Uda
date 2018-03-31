@@ -11,12 +11,21 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     //数据绑定
-    dataBinding.enabled=true;
+    dataBinding.enabled = true;
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    android {
+        defaultConfig {
+            vectorDrawables.useSupportLibrary = true
+        }
+    }
+
+    dependencies {
+        implementation 'com.android.support:appcompat-v7:26.1.0'
     }
 }
 

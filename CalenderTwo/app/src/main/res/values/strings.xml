@@ -31,4 +31,13 @@
     <string name="new_building_type">type</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+
+    <string name="timeStamp">%d-%d-%d-%d-%d-00</string>
+
+    <string name="bundle_plan">plan</string>
+    <string name="bundle_hour">hour</string>
+    <string name="bundle_minute">minute</string>
+    <string name="sure">确定</string>
+    <string name="month">月</string>
+    <string name="week">周</string>
 </resources>

@@ -14,10 +14,11 @@
         >
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:text="123"
             android:id="@+id/time_memor_recycler_item"
-            android:paddingTop="16dp"/>
+            android:paddingTop="20dp"
+            android:textSize="@dimen/time_size"/>
         <FrameLayout
             android:layout_width="10dp"
             android:layout_height="match_parent"
@@ -38,14 +39,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@android:dimen/app_icon_size"
             android:orientation="vertical"
             android:paddingTop="16dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="阿萨德请问"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size"
                 android:id="@+id/plan_memor_recycler_item"/>
             <View
                 android:layout_width="match_parent"

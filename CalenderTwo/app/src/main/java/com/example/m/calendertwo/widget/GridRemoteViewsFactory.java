@@ -32,7 +32,6 @@ public class GridRemoteViewsFactory implements RemoteViewsService.RemoteViewsFac
     @Override
     public void onDataSetChanged() {
         mDateInfo=DateInfo.getSpecialDate(CalenderWidgetProvider.gap);
-
     }
 
     @Override

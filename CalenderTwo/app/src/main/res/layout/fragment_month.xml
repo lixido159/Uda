@@ -1,18 +1,15 @@
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.m.calendertwo.MonthFragment"
-        android:orientation="vertical">
+        tools:context="com.example.m.calendertwo.fragment.MonthFragment"
+        android:orientation="vertical"
+        android:background="@color/white">
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/month_fragment_recycler"
             android:background="@color/back_color"/>
         <View
@@ -23,9 +20,11 @@
             android:layout_width="match_parent"
             android:layout_height="24dp"
             android:gravity="center_vertical"
-            android:paddingLeft="6dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="6dp"
             android:id="@+id/month_fragment_distance_days"
-            android:background="@color/back_color"/>
+            android:textSize="@dimen/text_size"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -33,10 +32,8 @@
 
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/month_fragment_memor_recycler"
                 android:background="@color/plan_background"/>
     </LinearLayout>
 
-
-</ScrollView>
