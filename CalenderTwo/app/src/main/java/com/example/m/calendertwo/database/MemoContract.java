@@ -10,8 +10,6 @@ import android.provider.BaseColumns;
 public class MemoContract implements BaseColumns {
     public static final String TABLE_NAME="memos";
     public static final String COLUMN_PLAN="plan";
-    public static final String COLUMN_ICON_IMG="img";
-    public static final String COLUMN_ICON_BACK="back";
 
     public static final String COLUMN_BEGIN_TIME_YEAR="beginyear";
     public static final String COLUMN_BEGIN_TIME_MONTH="beginmonth";
@@ -32,19 +30,17 @@ public class MemoContract implements BaseColumns {
     public static final String CONTENT_PATH_MEMO="memo";
     public static final Uri CONTENT_URI=Uri.withAppendedPath(BASE_CONTENT_URI,CONTENT_PATH_MEMO);
 
-
+    public static final int INDEX_ID=0;
     public static final int INDEX_PLAN=1;
-    public static final int INDEX_ICON_IMG=2;
-    public static final int INDEX_ICON_BACK=3;
-    public static final int INDEX_BEGIN_TIME_YEAR=4;
-    public static final int INDEX_BEGIN_TIME_MONTH=5;
-    public static final int INDEX_BEGIN_TIME_DAY=6;
-    public static final int INDEX_BEGIN_TIME_HOUR=7;
-    public static final int INDEX_BEGIN_TIME_MINUTE=8;
+    public static final int INDEX_BEGIN_TIME_YEAR=2;
+    public static final int INDEX_BEGIN_TIME_MONTH=3;
+    public static final int INDEX_BEGIN_TIME_DAY=4;
+    public static final int INDEX_BEGIN_TIME_HOUR=5;
+    public static final int INDEX_BEGIN_TIME_MINUTE=6;
 
-    public static final int INDEX_END_TIME_YEAR=9;
-    public static final int INDEX_END_TIME_MONTH=10;
-    public static final int INDEX_END_TIME_DAY=11;
-    public static final int INDEX_END_TIME_HOUR=12;
-    public static final int INDEX_END_TIME_MINUTE=13;
+    public static final int INDEX_END_TIME_YEAR=7;
+    public static final int INDEX_END_TIME_MONTH=8;
+    public static final int INDEX_END_TIME_DAY=9;
+    public static final int INDEX_END_TIME_HOUR=10;
+    public static final int INDEX_END_TIME_MINUTE=11;
 }

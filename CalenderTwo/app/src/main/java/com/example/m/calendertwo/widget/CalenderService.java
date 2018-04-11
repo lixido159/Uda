@@ -6,7 +6,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 /**
  * Created by m on 2018/3/26.
@@ -47,7 +46,6 @@ public class CalenderService extends IntentService {
             int[]appWidgetIds=appWidgetManager.getAppWidgetIds(new ComponentName(this,CalenderWidgetProvider.class));
             CalenderWidgetProvider.updateCalenderWidgets(this,appWidgetManager,appWidgetIds,
                     type);
-            Log.v("线程",Thread.currentThread().getName());
         }
     }
     public static void startActionUpdateWidgets(Context context){

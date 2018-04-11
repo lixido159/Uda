@@ -44,8 +44,8 @@ public class MemoProvider extends ContentProvider {
             throw new IllegalArgumentException("查询数据库,Uri参数有问题!");
         }
         SQLiteDatabase database=mHelper.getReadableDatabase();
-        cursor=database.query(MemoContract.TABLE_NAME,projection,selection,selectionArgs,
-                null,null,sortOrder);
+        cursor=database.query(true,MemoContract.TABLE_NAME,projection,selection,selectionArgs,
+                null,null,sortOrder,null);
         cursor.setNotificationUri(getContext().getContentResolver(),uri);
         return cursor;
     }

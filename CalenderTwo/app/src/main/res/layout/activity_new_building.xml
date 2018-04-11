@@ -62,28 +62,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="32dp"
         android:background="@color/gray_line" />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@android:dimen/app_icon_size"
-        android:background="@color/white">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/title_size"
-            android:layout_centerVertical="true"
-            android:text="@string/all_day"
-            android:textColor="@color/black"
-            android:paddingLeft="@dimen/newbuilding_padding_left" />
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:track="@drawable/selector_track"
-            android:switchMinWidth="@dimen/switch_width"
-            android:layout_marginRight="@dimen/newbuilding_padding_left"
-            android:thumbTint="@color/white"/>
-    </RelativeLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

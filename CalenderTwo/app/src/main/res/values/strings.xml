@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">CalenderTwo</string>
-    <string name="today">今天</string>
+
     <string name="date_title">%d年%d月</string>
     <string name="sunday">日</string>
     <string name="monday">一</string>
@@ -10,9 +10,9 @@
     <string name="friday">五</string>
     <string name="saturday">六</string>
 
-
-    <string name="day_before">%d天前</string>
-    <string name="day_after">%d天后</string>
+    <string name="today">今天&#160;&#160;&#8201;农历&#160;&#160;&#8201;%1$s%2$s</string>
+    <string name="day_before">%d天前&#160;&#160;&#8201;农历&#160;&#160;&#8201;%s%s</string>
+    <string name="day_after">%d天后&#160;&#160;&#8201;农历&#160;&#160;&#8201;%s%s</string>
 
     <string name="new_building_activity">新建活动</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -40,4 +40,9 @@
     <string name="sure">确定</string>
     <string name="month">月</string>
     <string name="week">周</string>
+    <string name="main">main</string>
+    <string name="memor">memor</string>
+    <string name="today_menu">今天</string>
+    <string name="no_memor">没有日程</string>
+    <string name="warning">日程不能为空!</string>
 </resources>

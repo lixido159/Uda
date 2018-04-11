@@ -257,7 +257,7 @@ public class PickerScrollView extends View {
 
     private void doDown(MotionEvent event)
     {
-        Log.v("落点位置:",event.getY()+"");
+
         if (mTask != null)
         {
             mTask.cancel();
@@ -268,7 +268,7 @@ public class PickerScrollView extends View {
 
     private void doMove(MotionEvent event)
     {
-        Log.v("实时位置:",event.getY()+"");
+
         mMoveLen += (event.getY() - mLastDownY);
 
         if (mMoveLen > MARGIN_ALPHA * mMinTextSize / 2)
@@ -287,7 +287,7 @@ public class PickerScrollView extends View {
     }
 
     private void doUp(MotionEvent event)
-    {Log.v("抬点位置:",event.getY()+"");
+    {
         // 抬起手后mCurrentSelected的位置由当前位置move到中间选中位置
         if (Math.abs(mMoveLen) < 0.0001)
         {

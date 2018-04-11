@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="@string/today"
+        android:title="@string/today_menu"
         android:id="@+id/menu_today"
         android:textSize="@dimen/text_size"
         app:showAsAction="always"/>

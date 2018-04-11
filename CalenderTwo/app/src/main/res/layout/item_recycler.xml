@@ -17,22 +17,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            android:id="@+id/date_recycler_item"
-            android:gravity="center_horizontal|bottom"
-            android:textSize="@dimen/text_size"
-            android:textColor="@android:color/black"
-            tools:text="1"/>
+            android:layout_weight="2">
+            <ImageView
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:src="@drawable/dot_scheduled"
+                android:layout_centerInParent="true"
+                android:id="@+id/date_recycler_img"
+                android:visibility="gone" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/date_recycler_item"
+                android:gravity="center_horizontal|bottom"
+                android:textSize="@dimen/text_size"
+                android:textColor="@android:color/black"
+
+                tools:text="1"/>
+        </RelativeLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:id="@+id/lunar_date_recycler_item"
             android:gravity="center_horizontal|top"
-            android:textSize="16sp" />
+            android:textSize="8sp"
+            android:textColor="@color/text_color"/>
 
     </LinearLayout>
 

@@ -23,8 +23,6 @@ public class MemoDbHelper extends SQLiteOpenHelper{
         String CREATE_TABLE="CREATE TABLE "+MemoContract.TABLE_NAME+"("
                 +MemoContract._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
                 +MemoContract.COLUMN_PLAN+" TEXT,"
-                +MemoContract.COLUMN_ICON_IMG+" INTEGER,"
-                +MemoContract.COLUMN_ICON_BACK+" INTEGER,"
                 +MemoContract.COLUMN_BEGIN_TIME_YEAR+" INTEGER,"
                 +MemoContract.COLUMN_BEGIN_TIME_MONTH+" INTEGER,"
                 +MemoContract.COLUMN_BEGIN_TIME_DAY+" INTEGER,"

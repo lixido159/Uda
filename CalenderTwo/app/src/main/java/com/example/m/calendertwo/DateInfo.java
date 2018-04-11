@@ -2,7 +2,6 @@ package com.example.m.calendertwo;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -109,7 +108,6 @@ public class DateInfo implements Parcelable{
         calendar.add(Calendar.YEAR,year-dateInfo.getYear());
         calendar.add(Calendar.MONTH,month-dateInfo.getMonth());
         calendar.add(Calendar.DAY_OF_MONTH,day-dateInfo.getDay());
-        Log.v("检测:",year+ " "+month+" "+day);
         switch (calendar.get(Calendar.DAY_OF_WEEK)){
 
             case 2:
@@ -241,5 +239,95 @@ public class DateInfo implements Parcelable{
             list.add(array[i]);
         }
         return list;
+    }
+    public static String getChinaMonthString(int month){
+        switch (month){
+            case 1:
+                return"一月(正月)";
+            case 2:
+                return"二月";
+            case 3:
+                return"三月";
+            case 4:
+                return"四月";
+            case 5:
+                return"五月";
+            case 6:
+                return"六月";
+            case 7:
+                return"七月";
+            case 8:
+                return"八月";
+            case 9:
+                return"九月";
+            case 10:
+                return"十月";
+            case 11:
+                return"十一月(冬月)";
+            case 12:
+                return"十二月(腊月)";
+        }
+        return null;
+    }
+    public static String getChinaDayString(int day) {
+        switch (day){
+            case 10:
+                return "初十";
+            case 20:
+                return "廿";
+            case 30:
+                return "卅";
+        }
+        String first=null;
+        String second=null;
+        switch (day/10){
+            case 0:
+                first="初";
+                break;
+            case 1:
+                first="十";
+                break;
+            case 2:
+                first="廿";
+                break;
+        }
+        switch (day%10){
+            case 1:
+                second= "一";
+                break;
+            case 2:
+                second=  "二";
+                break;
+            case 3:
+                second= "三";
+                break;
+            case 4:
+                second= "四";
+                break;
+            case 5:
+                second= "五";
+                break;
+            case 6:
+                second= "六";
+                break;
+            case 7:
+                second= "七";
+                break;
+            case 8:
+                second= "八";
+                break;
+            case 9:
+                second= "九";
+                break;
+        }
+        return first+second;
+    }
+
+    public static Calendar getCalendar(int year,int month,int day){
+        Calendar cal=Calendar.getInstance();
+        cal.set(Calendar.YEAR,year);
+        cal.set(Calendar.MONTH,month-1);
+        cal.set(Calendar.DAY_OF_MONTH,day);
+        return cal;
     }
 }

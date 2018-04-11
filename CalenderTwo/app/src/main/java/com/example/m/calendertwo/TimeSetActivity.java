@@ -1,13 +1,14 @@
 package com.example.m.calendertwo;
 
-import android.content.Intent;
+
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.NavUtils;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
+
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -20,12 +21,8 @@ import com.example.m.calendertwo.customView.DayPickerScrollView;
 import com.example.m.calendertwo.customView.MonthPickerScrollView;
 import com.example.m.calendertwo.customView.TimePickScrollView;
 import com.example.m.calendertwo.customView.YearPickerScrollView;
-
-
-import java.sql.Time;
-import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
+
 
 public class TimeSetActivity extends AppCompatActivity implements YearPickerScrollView.YearChangeCallBack, MonthPickerScrollView.MonthChangeCallBack, DayPickerScrollView.DayChangeCallBack, TimePickScrollView.TimeChangeCallBack {
     private int mYear;
@@ -42,7 +39,8 @@ public class TimeSetActivity extends AppCompatActivity implements YearPickerScro
     private TimePickScrollView mMinuteView;
     private TextView mTimeText;
     private TimeInfo mTimeInfo;
-    private Bundle mBundle;
+
+    private static TimeSetListener mTimeSetListener;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,37 +57,15 @@ public class TimeSetActivity extends AppCompatActivity implements YearPickerScro
         mTimeText=findViewById(R.id.time_set_time);
         mHourView=findViewById(R.id.time_set_hour);
         mMinuteView=findViewById(R.id.time_set_minute);
-
-        mBundle=getIntent().getBundleExtra(getString(R.string.intent_time));
-        if (mBundle.getInt(getString(R.string.new_building_type),0)==TimeInfo.TYPE_BEGIN){
-            mTimeInfo=mBundle.getParcelable(getString(R.string.new_building_begin));
-            Log.v("时间",mYear+" "+mMonth+" "+mTimeInfo.getType());
+        mTimeInfo=getIntent().getParcelableExtra(getString(R.string.intent_time));
+        if (mTimeInfo.getType()==TimeInfo.TYPE_BEGIN){
             titleText.setText(getString(R.string.begin));
         }else {
-            mTimeInfo=mBundle.getParcelable(getString(R.string.new_building_end));
             titleText.setText(getString(R.string.end));
         }
         toolbar.inflateMenu(R.menu.newbuilding_tool_bar_menu);
         toolbar.setNavigationIcon(getDrawable(R.drawable.close));
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId()==R.id.new_building_toolbar_menu_check){
-                    Intent intent=NavUtils.getParentActivityIntent(TimeSetActivity.this);
-                    if (mTimeInfo.getType()==TimeInfo.TYPE_BEGIN){
-                        mBundle.putParcelable(getString(R.string.new_building_begin),
-                                new TimeInfo(mYear,mMonth,mDay,mHour,mMinute,mTimeInfo.getType()));
-                    }else {
-                        mBundle.putParcelable(getString(R.string.new_building_end),
-                                new TimeInfo(mYear,mMonth,mDay,mHour,mMinute,mTimeInfo.getType()));
-                    }
 
-                    intent.putExtra(getString(R.string.intent_time),mBundle);
-                    NavUtils.navigateUpTo(TimeSetActivity.this,intent);
-                }
-                return false;
-            }
-        });
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,14 +77,24 @@ public class TimeSetActivity extends AppCompatActivity implements YearPickerScro
         mDay=mTimeInfo.getDay();
         mHour=mTimeInfo.getHour();
         mMinute=mTimeInfo.getMinute();
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId()==R.id.new_building_toolbar_menu_check){
+                    mTimeSetListener.timeSetChange(mYear,mMonth,mDay,mHour,mMinute,mTimeInfo.getType());
+                    onBackPressed();
+                }
+                return false;
+            }
+        });
         mTimeText.setText(String.format(getString(R.string.time_set_time), mYear,mMonth,mDay,
                 DateInfo.getWeekDay(mYear,mMonth,mDay)));
         mYearView.initData(DateInfo.arrayToList(getResources().getIntArray(R.array.scroll_selector_year)),
-                mTimeInfo.getYear(),this);
+                mYear,this);
         mMonthView.initData(DateInfo.arrayToList(getResources().getIntArray(R.array.scroll_selector_month)),
-                mTimeInfo.getMonth(),this);
-        mDayView.initData(getDays(mTimeInfo.getYear(),mTimeInfo.getMonth()),
-                mTimeInfo.getDay(),this);
+                mMonth,this);
+        mDayView.initData(getDays(mYear,mMonth),
+                mDay,this);
         mHourView.initData(DateInfo.arrayToList(getResources().getIntArray(R.array.srcoll_selector_hour)),
                 mHour,TYPE_HOUR,this);
         mMinuteView.initData(DateInfo.arrayToList(getResources().getIntArray(R.array.srcoll_selector_minute)),
@@ -201,9 +187,6 @@ public class TimeSetActivity extends AppCompatActivity implements YearPickerScro
                 return DateInfo.arrayToList(getResources().getIntArray(R.array.scroll_selector_day_31));
         }
     }
-
-
-
     @Override
     public void timeChange(int time, int type) {
         switch (type){
@@ -214,5 +197,11 @@ public class TimeSetActivity extends AppCompatActivity implements YearPickerScro
                 mMinute=time;
                 break;
         }
+    }
+    public interface TimeSetListener{
+        public void timeSetChange(int year, int month,int day,int hour,int minute,int type);
+    }
+    public static void setOnTimeSetListener(TimeSetListener listener){
+        mTimeSetListener=listener;
     }
 }

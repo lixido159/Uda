@@ -75,6 +75,19 @@ public class TimeInfo implements Parcelable {
         this.mMinute = mMinute;
         this.mType = mType;
     }
+
+    public void setYear(int mYear) {
+        this.mYear = mYear;
+    }
+
+    public void setMonth(int mMonth) {
+        this.mMonth = mMonth;
+    }
+
+    public void setDay(int mDay) {
+        this.mDay = mDay;
+    }
+
     public static TimeInfo getTimeInfo(int type){
         Calendar calendar=Calendar.getInstance();
         TimeZone tz = TimeZone.getTimeZone("GMT+08");
@@ -105,10 +118,12 @@ public class TimeInfo implements Parcelable {
     }
     public static boolean isSmaller(TimeInfo beginTime,TimeInfo endTime){
         DecimalFormat format=new DecimalFormat("00");
-        float num1=Float.valueOf(beginTime.getYear()+format.format(beginTime.getMonth())+
+        long num1=Long.valueOf(beginTime.getYear()+format.format(beginTime.getMonth())+
                 format.format(beginTime.getDay())+format.format(beginTime.getHour())+format.format(beginTime.getMinute()));
-        float num2=Float.valueOf(endTime.getYear()+format.format(endTime.getMonth())+
+        long num2=Long.valueOf(endTime.getYear()+format.format(endTime.getMonth())+
                 format.format(endTime.getDay())+format.format(endTime.getHour())+format.format(endTime.getMinute()));
+
+
         if (num2<num1){
             return true;
         }

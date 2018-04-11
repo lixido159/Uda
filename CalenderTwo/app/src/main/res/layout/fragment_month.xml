@@ -24,7 +24,7 @@
             android:layout_marginBottom="6dp"
             android:layout_marginTop="6dp"
             android:id="@+id/month_fragment_distance_days"
-            android:textSize="@dimen/text_size"/>
+            android:textSize="11sp"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -32,7 +32,7 @@
 
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/month_fragment_memor_recycler"
                 android:background="@color/plan_background"/>
     </LinearLayout>
